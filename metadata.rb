@@ -1,6 +1,6 @@
 name             'unwb'
-maintainer       'YOUR_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'Coddeys'
+maintainer_email 'coddeys@gmail.com'
 license          'All rights reserved'
 description      'Installs/Configures unwb'
 long_description 'Installs/Configures unwb'
