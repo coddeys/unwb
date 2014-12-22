@@ -14,3 +14,16 @@ user node['unwb']['user'] do
   system true
   shell '/bin/bash'
 end
+
+include_recipe 'nginx::source'
+
+# include_recipe "rails"
+# include_recipe "passenger_apache2"
+
+# application 'unwb-portal' do
+#   path '/var/www/rails-apps/unwb-portal'
+#   owner 'unwb'
+#   group 'unwb'
+#   repository 'https://github.com/coddeys/testapp'
+#   passenger_apache2
+# end
