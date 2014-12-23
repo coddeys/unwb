@@ -15,15 +15,33 @@ user node['unwb']['user'] do
   shell '/bin/bash'
 end
 
-include_recipe 'nginx::source'
+# update package database
+include_recipe "apt"
 
-# include_recipe "rails"
-# include_recipe "passenger_apache2"
+# install packages
+package "telnet"
+package "postfix"
+package "curl"
+package "git-core"
+package "zlib1g-dev"
+package "libssl-dev"
+package "libreadline-dev"
+package "libyaml-dev"
+package "libsqlite3-dev"
+package "sqlite3"
+package "libxml2-dev"
+package "libxslt1-dev"
+package "libpq-dev"
+package "build-essential"
+package "tree"
 
-# application 'unwb-portal' do
-#   path '/var/www/rails-apps/unwb-portal'
-#   owner 'unwb'
-#   group 'unwb'
-#   repository 'https://github.com/coddeys/testapp'
-#   passenger_apache2
-# end
+bash "set timezone" do
+  code <<-EOH
+    echo 'Europe/Moscow' > /etc/timezone
+    dpkg-reconfigure -f noninteractive tzdata
+  EOH
+  not_if "date | grep -q 'PDT\|PST'"
+end
+
+
+
