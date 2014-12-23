@@ -7,14 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-group node['unwb']['group']
-
-user node['unwb']['user'] do
-  group node['unwb']['group']
-  system true
-  shell '/bin/bash'
-end
-
 # update package database
 include_recipe "apt"
 
@@ -40,8 +32,5 @@ bash "set timezone" do
     echo 'Europe/Moscow' > /etc/timezone
     dpkg-reconfigure -f noninteractive tzdata
   EOH
-  not_if "date | grep -q 'PDT\|PST'"
+  not_if "date | grep -q 'MSK'"
 end
-
-
-

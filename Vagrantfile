@@ -69,7 +69,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
 
     chef.run_list = [
-      'recipe[unwb::default]'
+      'recipe[unwb::default]',
+      'recipe[unwb::user]',
+      'recipe[unwb::nodejs]',
+      'recipe[unwb::postgres]'
     ]
   end
 end
